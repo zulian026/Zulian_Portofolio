@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect, useMemo, memo } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Projects() {
   // Sample project data with updated image paths
@@ -161,13 +161,16 @@ const SectionHeader = ({ animations }) => (
 );
 
 // Separated View All button component
-const ViewAllButton = ({ animation }) => (
-  <motion.div className="flex justify-center mt-20" {...animation}>
-    <Link to="/projects">
+const ViewAllButton = ({ animation }) => {
+  const navigate = useNavigate();
+
+  return (
+    <motion.div className="flex justify-center mt-20" {...animation}>
       <motion.div
-        className="group relative px-10 py-4 bg-gradient-to-r from-pink-400 to-pink-500 text-white rounded-full overflow-hidden shadow-lg shadow-pink-500/20"
+        className="group relative px-10 py-4 bg-gradient-to-r from-pink-400 to-pink-500 text-white rounded-full overflow-hidden shadow-lg shadow-pink-500/20 cursor-pointer"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.98 }}
+        onClick={() => navigate("/projects")}
       >
         <motion.span
           className="absolute inset-0 w-full h-full bg-gradient-to-r from-pink-500 to-purple-500 z-10 opacity-0 group-hover:opacity-100"
@@ -203,9 +206,9 @@ const ViewAllButton = ({ animation }) => (
           transition={{ duration: 0.3 }}
         />
       </motion.div>
-    </Link>
-  </motion.div>
-);
+    </motion.div>
+  );
+};
 
 // Enhanced Gallery-Style Project Card Component with performance optimizations
 const ProjectCard = ({
