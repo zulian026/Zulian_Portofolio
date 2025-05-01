@@ -13,7 +13,7 @@ function Home() {
     hero: false,
     about: false,
     projects: false,
-    speciality: false
+    speciality: false,
   });
 
   // Update locomotive scroll after components are rendered
@@ -48,7 +48,7 @@ function Home() {
 
   // Mark sections as loaded
   const handleSectionLoad = (section) => {
-    setSectionsLoaded(prev => ({ ...prev, [section]: true }));
+    setSectionsLoaded((prev) => ({ ...prev, [section]: true }));
   };
 
   // Add resize observer to update scroll when main content resizes
@@ -85,22 +85,22 @@ function Home() {
     >
       {/* Add spacer to ensure proper spacing between sections */}
       <div data-scroll-section className="relative">
-        <Hero onLoad={() => handleSectionLoad('hero')} />
+        <Hero onLoad={() => handleSectionLoad("hero")} />
       </div>
-      
+
       {/* About Me Section with explicit height */}
       <div data-scroll-section className="relative">
-        <AboutMeSection onLoad={() => handleSectionLoad('about')} />
+        <AboutMeSection onLoad={() => handleSectionLoad("about")} />
       </div>
-      
+
       {/* Projects Section with explicit height */}
       <div data-scroll-section className="relative">
-        <Projects onLoad={() => handleSectionLoad('projects')} />
+        <Projects onLoad={() => handleSectionLoad("projects")} />
       </div>
 
       {/* Speciality Section */}
       <div data-scroll-section className="relative">
-        <Speciality onLoad={() => handleSectionLoad('speciality')} />
+        <Speciality onLoad={() => handleSectionLoad("speciality")} />
       </div>
     </motion.main>
   );

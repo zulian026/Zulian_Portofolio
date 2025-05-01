@@ -25,6 +25,9 @@ function Projects() {
     },
   ];
 
+  // Get the navigate function
+  const navigate = useNavigate();
+
   // Memoize animation variants to prevent unnecessary recalculations
   const animations = useMemo(
     () => ({
@@ -96,7 +99,10 @@ function Projects() {
       </motion.div>
 
       {/* View All Projects Button */}
-      <ViewAllButton animation={animations.viewAllButton} />
+      <ViewAllButton
+        animation={animations.viewAllButton}
+        onNavigate={() => navigate("/projects")}
+      />
     </div>
   );
 }
@@ -161,16 +167,14 @@ const SectionHeader = ({ animations }) => (
 );
 
 // Separated View All button component
-const ViewAllButton = ({ animation }) => {
-  const navigate = useNavigate();
-
+const ViewAllButton = ({ animation, onNavigate }) => {
   return (
     <motion.div className="flex justify-center mt-20" {...animation}>
       <motion.div
         className="group relative px-10 py-4 bg-gradient-to-r from-pink-400 to-pink-500 text-white rounded-full overflow-hidden shadow-lg shadow-pink-500/20 cursor-pointer"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.98 }}
-        onClick={() => navigate("/projects")}
+        onClick={onNavigate}
       >
         <motion.span
           className="absolute inset-0 w-full h-full bg-gradient-to-r from-pink-500 to-purple-500 z-10 opacity-0 group-hover:opacity-100"
