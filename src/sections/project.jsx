@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect, useMemo, memo } from "react";
+import { Link } from "react-router-dom";
 
 function Projects() {
   // Sample project data with updated image paths
@@ -162,46 +163,47 @@ const SectionHeader = ({ animations }) => (
 // Separated View All button component
 const ViewAllButton = ({ animation }) => (
   <motion.div className="flex justify-center mt-20" {...animation}>
-    <motion.a
-      href="/projects"
-      className="group relative px-10 py-4 bg-gradient-to-r from-pink-400 to-pink-500 text-white rounded-full overflow-hidden shadow-lg shadow-pink-500/20"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.98 }}
-    >
-      <motion.span
-        className="absolute inset-0 w-full h-full bg-gradient-to-r from-pink-500 to-purple-500 z-10 opacity-0 group-hover:opacity-100"
-        initial={{ opacity: 0 }}
-        whileHover={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-      />
-      <span className="relative z-20 font-bold flex items-center justify-center gap-3 text-lg">
-        View All Projects
-        <motion.svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="2"
-          stroke="currentColor"
-          className="w-5 h-5"
-          animate={{ x: [0, 5, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-          />
-        </motion.svg>
-      </span>
+    <Link to="/projects">
       <motion.div
-        className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100"
-        style={{
-          boxShadow: "0 0 20px 5px rgba(244, 114, 182, 0.4)",
-          zIndex: 5,
-        }}
-        transition={{ duration: 0.3 }}
-      />
-    </motion.a>
+        className="group relative px-10 py-4 bg-gradient-to-r from-pink-400 to-pink-500 text-white rounded-full overflow-hidden shadow-lg shadow-pink-500/20"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.98 }}
+      >
+        <motion.span
+          className="absolute inset-0 w-full h-full bg-gradient-to-r from-pink-500 to-purple-500 z-10 opacity-0 group-hover:opacity-100"
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        />
+        <span className="relative z-20 font-bold flex items-center justify-center gap-3 text-lg">
+          View All Projects
+          <motion.svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="2"
+            stroke="currentColor"
+            className="w-5 h-5"
+            animate={{ x: [0, 5, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+            />
+          </motion.svg>
+        </span>
+        <motion.div
+          className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100"
+          style={{
+            boxShadow: "0 0 20px 5px rgba(244, 114, 182, 0.4)",
+            zIndex: 5,
+          }}
+          transition={{ duration: 0.3 }}
+        />
+      </motion.div>
+    </Link>
   </motion.div>
 );
 
