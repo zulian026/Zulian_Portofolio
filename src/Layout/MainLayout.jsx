@@ -276,7 +276,9 @@ function Layout({ children }) {
       />
 
       {/* Main content */}
-      <div className="relative z-10">{children}</div>
+      <div className="relative z-10">
+        {children}
+      </div>
     </div>
   );
 }

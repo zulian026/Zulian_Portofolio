@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 function Projects() {
-  // Sample project data with updated image paths
-  const projectData = [
+  // Expanded project data with more projects
+  const allProjectData = [
     {
       id: 1,
       title: "E-Commerce Platform",
@@ -40,7 +40,68 @@ function Projects() {
       technologies: ["React", "Firebase", "Material UI"],
       imageUrl: "/images/zulian1.jpg", // Using placeholder images
     },
+    {
+      id: 5,
+      title: "Social Media Analytics",
+      year: "2024",
+      description:
+        "Dashboard for tracking and analyzing social media performance across multiple platforms with data visualization.",
+      technologies: ["React", "D3.js", "Redux", "Express"],
+      imageUrl: "/images/zulian1.jpg", // Using placeholder images
+    },
+    {
+      id: 6,
+      title: "AI Content Generator",
+      year: "2023",
+      description:
+        "Web app that leverages AI to generate content for marketing, blogs, and social media with customization options.",
+      technologies: ["Vue.js", "Python", "OpenAI API"],
+      imageUrl: "/images/zulian1.jpg", // Using placeholder images
+    },
+    {
+      id: 7,
+      title: "Real Estate Platform",
+      year: "2022",
+      description:
+        "Property listing and management platform with search filters, virtual tours, and appointment scheduling.",
+      technologies: ["Angular", "Node.js", "PostgreSQL"],
+      imageUrl: "/images/zulian1.jpg", // Using placeholder images
+    },
+    {
+      id: 8,
+      title: "Video Streaming Service",
+      year: "2021",
+      description:
+        "Custom video streaming platform with user subscriptions, content recommendations, and adaptive playback.",
+      technologies: ["React Native", "AWS", "Firebase"],
+      imageUrl: "/images/zulian1.jpg", // Using placeholder images
+    },
   ];
+
+  // State to control whether to show additional projects
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  
+  // Initial projects are always visible
+  const initialProjects = allProjectData.slice(0, 4);
+  
+  // Additional projects only shown when showAllProjects is true
+  const additionalProjects = allProjectData.slice(4);
+
+  // Effect to scroll to additional projects when they become visible
+  useEffect(() => {
+    if (showAllProjects) {
+      // Wait for render to complete, then scroll to the additional projects
+      setTimeout(() => {
+        const additionalProjectsStart = document.getElementById('additional-projects');
+        if (additionalProjectsStart) {
+          additionalProjectsStart.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }, 100);
+    }
+  }, [showAllProjects]);
 
   // Staggered animation for projects
   const containerVariants = {
@@ -58,7 +119,7 @@ function Projects() {
       data-scroll-section
       id="projects"
       style={{ fontFamily: "Clash Display, sans-serif" }}
-      className="py-20 md:py-32 px-6 md:px-10 lg:px-16 overflow-hidden "
+      className="py-20 md:py-32 px-6 md:px-10 lg:px-16 overflow-hidden"
     >
       {/* Section Title with Icon and Glow Effect - Left Aligned */}
       <motion.div
@@ -116,17 +177,16 @@ function Projects() {
       >
         <h3 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-white mb-4">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500">
-            Selected
+            Featured
           </span>{" "}
           Projects
         </h3>
         <p className="text-gray-300 max-w-2xl text-lg">
-          Here's a curated selection showcasing my expertise and the achieved
-          results.
+          Here's a curated selection showcasing my expertise and the achieved results.
         </p>
       </motion.div>
 
-      {/* Improved Grid Layout with Staggered Animation */}
+      {/* Initial Projects - Always Visible */}
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20"
         variants={containerVariants}
@@ -134,7 +194,7 @@ function Projects() {
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
       >
-        {projectData.map((project, index) => (
+        {initialProjects.map((project, index) => (
           <GalleryProjectCard
             key={project.id}
             title={project.title}
@@ -147,8 +207,47 @@ function Projects() {
           />
         ))}
       </motion.div>
+      
+      {/* Additional Projects - Only visible when showAllProjects is true */}
+      {showAllProjects && (
+        <>
+          {/* Divider */}
+          <motion.div
+            id="additional-projects"
+            className="w-full flex items-center justify-center gap-4 my-24"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="h-px bg-pink-400/30 flex-grow max-w-xs" />
+            <span className="text-pink-400 text-sm font-medium">More Projects</span>
+            <div className="h-px bg-pink-400/30 flex-grow max-w-xs" />
+          </motion.div>
+          
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, margin: "-50px" }}
+          >
+            {additionalProjects.map((project, index) => (
+              <GalleryProjectCard
+                key={project.id}
+                title={project.title}
+                year={project.year}
+                description={project.description}
+                technologies={project.technologies}
+                imageUrl={project.imageUrl}
+                isRightColumn={index % 2 === 1}
+                index={index + initialProjects.length}
+              />
+            ))}
+          </motion.div>
+        </>
+      )}
 
-      {/* View All Projects Button */}
+      {/* Toggle Projects Button */}
       <motion.div
         className="flex justify-center mt-20"
         initial={{ opacity: 0, y: 20 }}
@@ -156,8 +255,8 @@ function Projects() {
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        <motion.a
-          href="/projects"
+        <motion.button
+          onClick={() => setShowAllProjects(!showAllProjects)}
           className="group relative px-10 py-4 bg-gradient-to-r from-pink-400 to-pink-500 text-white rounded-full overflow-hidden shadow-lg shadow-pink-500/20"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.98 }}
@@ -169,7 +268,7 @@ function Projects() {
             transition={{ duration: 0.3 }}
           />
           <span className="relative z-20 font-bold flex items-center justify-center gap-3 text-lg">
-            View All Projects
+            {showAllProjects ? "Show Less Projects" : "View All Projects"}
             <motion.svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -183,7 +282,7 @@ function Projects() {
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                d={showAllProjects ? "M19.5 8.25l-7.5 7.5-7.5-7.5" : "M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"}
               />
             </motion.svg>
           </span>
@@ -195,7 +294,7 @@ function Projects() {
             }}
             transition={{ duration: 0.3 }}
           />
-        </motion.a>
+        </motion.button>
       </motion.div>
     </div>
   );
@@ -303,7 +402,7 @@ function GalleryProjectCard({
             />
           </motion.div>
         ) : (
-          <div className="w-full h-full flex items-center justify-center  text-pink-400">
+          <div className="w-full h-full flex items-center justify-center text-pink-400">
             <span>Image not available</span>
           </div>
         )}
@@ -366,7 +465,7 @@ function GalleryProjectCard({
         {technologies.map((tech, index) => (
           <motion.span
             key={index}
-            className=" text-pink-400 text-xs px-3 py-1 rounded-full border border-pink-400/30"
+            className="text-pink-400 text-xs px-3 py-1 rounded-full border border-pink-400/30"
             whileHover={{
               scale: 1.05,
               backgroundColor: "rgba(219, 39, 119, 0.2)",
