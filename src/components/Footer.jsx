@@ -35,7 +35,7 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Column 1: Logo & About */}
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-white">Your Name</h2>
+            <h2 className="text-2xl font-bold text-white">Zulian Alhisyam</h2>
             <p className="text-gray-400 max-w-md">
               Creating digital experiences with a focus on performance,
               accessibility, and beautiful designs.
@@ -48,7 +48,7 @@ function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#home"
+                  href="/home"
                   className="text-gray-400 hover:text-white transition duration-300"
                 >
                   Home
@@ -56,7 +56,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="#about"
+                  href="/about"
                   className="text-gray-400 hover:text-white transition duration-300"
                 >
                   About
@@ -64,7 +64,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="#projects"
+                  href="/projects"
                   className="text-gray-400 hover:text-white transition duration-300"
                 >
                   Projects
@@ -72,10 +72,10 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="#speciality"
+                  href="/contact"
                   className="text-gray-400 hover:text-white transition duration-300"
                 >
-                  Speciality
+                  Contact
                 </a>
               </li>
             </ul>
@@ -117,10 +117,10 @@ function Footer() {
               </p>
               <p className="text-gray-400">
                 <a
-                  href="mailto:your.email@example.com"
+                  href="mailto:zulianalhisyam.com"
                   className="hover:text-white transition duration-300"
                 >
-                  your.email@example.com
+                  Zulianalhisyam@gmail.com
                 </a>
               </p>
             </div>
@@ -130,7 +130,7 @@ function Footer() {
         {/* Copyright Section */}
         <div className="mt-12 pt-8 border-t border-gray-800 text-center">
           <p className="text-gray-500">
-            © {currentYear} Your Name. All rights reserved.
+            © {currentYear} Zulian Alhisyam. All rights reserved.
           </p>
           <p className="text-gray-600 text-sm mt-2">
             Designed and built with passion

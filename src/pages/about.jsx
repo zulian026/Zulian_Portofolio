@@ -60,24 +60,7 @@ export default function About() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      {/* Scroll indicator - same as Hero */}
-      <motion.div
-        className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: hasScrolled ? 0 : 1 }}
-        transition={{ duration: 0.3 }}
-      >
-        <motion.p className="text-gray-400 text-xs md:text-sm">
-          Scroll to explore
-        </motion.p>
-        <motion.div className="w-4 h-8 md:w-5 md:h-10 border border-gray-500 rounded-full flex justify-center pt-2">
-          <motion.div
-            className="w-1 h-1 md:w-1.5 md:h-1.5 bg-pink-400 rounded-full"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          />
-        </motion.div>
-      </motion.div>
+    
 
       {/* Background shapes - animated like in Hero */}
       <motion.div

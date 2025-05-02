@@ -11,7 +11,7 @@ function Projects() {
       description:
         "A full-stack e-commerce application with product management, user authentication, and payment integration.",
       technologies: ["React", "Node.js", "MongoDB"],
-      imageUrl: "/images/p.jpg", // Using placeholder images
+      imageUrl: "/images/zulian1.jpg", // Using placeholder images
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ function Projects() {
       description:
         "Real-time weather application that displays current and forecasted weather data with interactive maps.",
       technologies: ["JavaScript", "OpenWeather API", "Leaflet"],
-      imageUrl: "/images/p.jpg", // Using placeholder images
+      imageUrl: "/images/zulian1.jpg", // Using placeholder images
     },
     {
       id: 3,
@@ -29,7 +29,7 @@ function Projects() {
       description:
         "Personal portfolio built with modern web technologies featuring smooth animations and responsive design.",
       technologies: ["React", "Framer Motion", "Tailwind CSS"],
-      imageUrl: "/images/p.jpg", // Using placeholder images
+      imageUrl: "/images/zulian1.jpg", // Using placeholder images
     },
     {
       id: 4,
@@ -38,7 +38,7 @@ function Projects() {
       description:
         "Collaborative task management application with real-time updates and team collaboration features.",
       technologies: ["React", "Firebase", "Material UI"],
-      imageUrl: "/images/p.jpg", // Using placeholder images
+      imageUrl: "/images/zulian1.jpg", // Using placeholder images
     },
   ];
 
