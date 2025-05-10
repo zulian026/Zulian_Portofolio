@@ -26,7 +26,7 @@ function Footer() {
   return (
     <motion.footer
       data-scroll-section
-      className="w-full py-12 px-4 md:px-8 bg-gradient-to-t from-black to-transparent border-t border-gray-800 mt-20"
+      className="w-full py-12 px-4 md:px-8  border-t border-gray-800 mt-20"
       initial="hidden"
       animate="visible" // Gunakan animate bukan whileInView
       variants={footerVariants}
