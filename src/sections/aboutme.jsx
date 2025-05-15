@@ -1,10 +1,36 @@
 import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { useLocomotiveScroll } from "../providers/LocomotiveScrollProvider";
 
 export default function AboutMeSection() {
   const [isMobile, setIsMobile] = useState(false);
   const { scroll, isReady } = useLocomotiveScroll();
+  const navigate = useNavigate();
+
+  const ActionButton = ({ children, primary, onClick }) => (
+  <button
+    onClick={onClick} // ⬅️ TAMBAHKAN INI
+    className={`relative px-6 py-3 ${
+      primary
+        ? "bg-gradient-to-r from-pink-400 to-pink-500 text-white group overflow-hidden"
+        : "border border-pink-400 text-pink-400 hover:bg-pink-400/10"
+    } 
+      rounded-full transition-colors font-bold flex items-center justify-center gap-2`}
+    data-scroll
+    data-scroll-speed="0.05"
+  >
+    {primary && (
+      <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-pink-500 to-purple-500 z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
+    )}
+    <span
+      className={primary ? "relative z-20 flex items-center justify-center gap-2" : ""}
+    >
+      {children}
+    </span>
+  </button>
+);
+
 
   // Mobile detection with debounce
   useEffect(() => {
@@ -140,7 +166,7 @@ export default function AboutMeSection() {
       )}
 
       {/* Heading with simple animation */}
-      <motion.div 
+      <motion.div
         className="w-full max-w-5xl mx-auto relative z-10 mb-12 md:mb-16"
         data-scroll
         data-scroll-speed="0.3"
@@ -157,7 +183,7 @@ export default function AboutMeSection() {
             data-scroll
             data-scroll-speed="0.5"
           />
-          <span 
+          <span
             className="text-pink-400 text-lg md:text-xl font-semibold"
             data-scroll
             data-scroll-speed="0.4"
@@ -172,15 +198,15 @@ export default function AboutMeSection() {
           data-scroll
           data-scroll-speed="0.2"
         >
-          <span 
+          <span
             className="text-purple-500"
             data-scroll
-            data-scroll-direction="horizontal" 
+            data-scroll-direction="horizontal"
             data-scroll-speed="-0.1"
           >
             Passionate
-          </span> about design &
-          development
+          </span>{" "}
+          about design & development
         </motion.h2>
       </motion.div>
 
@@ -201,12 +227,12 @@ export default function AboutMeSection() {
             data-scroll
             data-scroll-speed="0.3"
           >
-            <div 
+            <div
               className="relative rounded-xl overflow-hidden shadow-xl"
               data-scroll
               data-scroll-class="animated-border"
             >
-              <div 
+              <div
                 className="absolute inset-0 bg-gradient-to-b from-pink-400/30 to-purple-500/30 mix-blend-overlay z-10"
                 data-scroll
                 data-scroll-speed="0.15"
@@ -229,14 +255,14 @@ export default function AboutMeSection() {
             data-scroll
             data-scroll-speed="0.4"
           >
-            <h3 
+            <h3
               className="text-2xl md:text-3xl font-bold text-pink-400 mb-4"
               data-scroll
               data-scroll-speed="0.45"
             >
               My Journey
             </h3>
-            <p 
+            <p
               className="text-lg text-gray-300 mb-6 leading-relaxed"
               data-scroll
               data-scroll-speed="0.5"
@@ -247,7 +273,7 @@ export default function AboutMeSection() {
               frontend development and animation, I bring creativity and
               technical skill to every project.
             </p>
-            <p 
+            <p
               className="text-lg text-gray-300 mb-6 leading-relaxed"
               data-scroll
               data-scroll-speed="0.55"
@@ -258,31 +284,15 @@ export default function AboutMeSection() {
               applications that leave a lasting impression.
             </p>
 
-            <div 
+            <div
               className="flex flex-col sm:flex-row gap-4 mt-8"
               data-scroll
               data-scroll-speed="0.6"
               data-scroll-delay="0.3"
             >
-              <ActionButton primary>
-                My Portfolio
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  className="w-4 h-4 sm:w-5 sm:h-5"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                  />
-                </svg>
+              <ActionButton onClick={() => navigate("/contact")}>
+                Contact Me
               </ActionButton>
-
-              <ActionButton>Contact Me</ActionButton>
             </div>
           </motion.div>
         </div>
@@ -295,7 +305,13 @@ export default function AboutMeSection() {
 }
 
 // Extracted reusable components with Locomotive Scroll support
-const BackgroundShape = ({ position, initialRotate, color, delay, scrollSpeed }) => (
+const BackgroundShape = ({
+  position,
+  initialRotate,
+  color,
+  delay,
+  scrollSpeed,
+}) => (
   <motion.div
     className={`absolute ${position} pointer-events-none opacity-20`}
     initial={{ opacity: 0, rotate: initialRotate }}

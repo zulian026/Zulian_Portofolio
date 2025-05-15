@@ -87,7 +87,7 @@ function Footer() {
             <div className="space-y-2">
               <p className="text-gray-400">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/zulian026"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition duration-300"
@@ -97,7 +97,7 @@ function Footer() {
               </p>
               <p className="text-gray-400">
                 <a
-                  href="https://linkedin.com"
+                  href="https://linkedin.com/in/zulian-alhisyam-175414363"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition duration-300"
@@ -107,12 +107,12 @@ function Footer() {
               </p>
               <p className="text-gray-400">
                 <a
-                  href="https://twitter.com"
+                  href="https://www.instagram.com/zyanx_04"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition duration-300"
                 >
-                  Twitter
+                  Instagram
                 </a>
               </p>
               <p className="text-gray-400">

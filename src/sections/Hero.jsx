@@ -93,7 +93,7 @@ function Hero() {
   const socialLinks = [
     {
       name: "LINKEDIN",
-      link: "https://linkedin.com/in/username",
+      link: "https://linkedin.com/in/zulian-alhisyam-175414363",
     },
     {
       name: "GITHUB",

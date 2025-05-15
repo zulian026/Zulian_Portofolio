@@ -377,29 +377,7 @@ export default function About() {
                     repeatType: "mirror",
                   }}
                 />
-                <motion.button
-                  className="relative w-full sm:w-auto bg-white text-gray-900 px-5 sm:px-6 py-2.5 sm:py-3 rounded-md font-bold flex items-center justify-center sm:justify-start gap-2 hover:bg-pink-400 transition-colors z-10"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  My Portfolio
-                  <motion.svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    className="w-4 h-4 sm:w-5 sm:h-5"
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                    />
-                  </motion.svg>
-                </motion.button>
+                
               </div>
 
               {/* Secondary button */}
