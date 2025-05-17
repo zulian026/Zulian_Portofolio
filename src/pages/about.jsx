@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Education from "../sections/education";
+import { useNavigate } from "react-router-dom"; // Import useNavigate instead of Link
 
 export default function About() {
+  const navigate = useNavigate(); // Initialize useNavigate hook
   const [activeIndex, setActiveIndex] = useState(null);
   const [hasScrolled, setHasScrolled] = useState(false);
 
@@ -380,11 +382,12 @@ export default function About() {
                 
               </div>
 
-              {/* Secondary button */}
+              {/* Secondary button with useNavigate for /contact */}
               <motion.button
                 className="px-6 py-3 border border-pink-400 text-pink-400 rounded-md hover:bg-pink-400/10 transition-colors font-bold"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => navigate('/contact')} // Add onClick handler to navigate to /contact
               >
                 Contact Me
               </motion.button>
